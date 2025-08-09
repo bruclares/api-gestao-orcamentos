@@ -1,17 +1,31 @@
+// {
+//   // Configurações específicas para arquivos Python
+//   "[python]": {
+//     // Define o Ruff como o formatador padrão para Python.
+//     "editor.defaultFormatter": "charliermarsh.ruff",
+//     // Ativa a formatação automática sempre que você salvar um arquivo Python.
+//     "editor.formatOnSave": true,
+//     // Ação mais poderosa: corrige erros e organiza os imports ao salvar.
+//     "editor.codeActionsOnSave": {
+//       "source.fixAll": "explicit",
+//       "source.organizeImports": "explicit"
+//     }
+//   },
+//   // Define o tamanho da tabulação para 2 espaços em vez do padrão 4.
+//   // Isso é uma preferência comum e alinha com o que você já tinha.
+//   "editor.tabSize": 4
+// }
 {
-  // Configurações específicas para arquivos Python
+  // Adicione esta linha!
+  "python.defaultInterpreterPath": "./venv/bin/python",
+  // Suas outras configurações
   "[python]": {
-    // Define o Ruff como o formatador padrão para Python.
     "editor.defaultFormatter": "charliermarsh.ruff",
-    // Ativa a formatação automática sempre que você salvar um arquivo Python.
     "editor.formatOnSave": true,
-    // Ação mais poderosa: corrige erros e organiza os imports ao salvar.
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit",
       "source.organizeImports": "explicit"
     }
   },
-  // Define o tamanho da tabulação para 2 espaços em vez do padrão 4.
-  // Isso é uma preferência comum e alinha com o que você já tinha.
-  "editor.tabSize": 2
+  "editor.tabSize": 4
 }
