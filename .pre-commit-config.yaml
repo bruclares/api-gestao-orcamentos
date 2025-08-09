@@ -1,0 +1,26 @@
+# Arquivo de configuração para o pre-commit
+# Define quais "ganchos" (hooks) serão executados antes de cada commit.
+
+repos:
+  # Repositório que contém os ganchos do pre-commit para o Ruff
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # 'rev' especifica a versão do ruff a ser usada. É bom fixar uma versão.
+    rev: v0.5.0
+    hooks:
+      # Hook 1: Executa o linter do Ruff para encontrar erros e problemas.
+      - id: ruff
+        # '--fix' tenta corrigir automaticamente os problemas que encontrar.
+        args: [--fix]
+      # Hook 2: Executa o formatador do Ruff (similar ao black).
+      - id: ruff-format
+
+  # Repositório que contém ganchos genéricos úteis
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      # Verifica se não há arquivos grandes sendo commitados
+      - id: check-added-large-files
+      # Garante que os arquivos terminem com uma única linha em branco
+      - id: end-of-file-fixer
+      # Remove espaços em branco desnecessários no final das linhas
+      - id: trailing-whitespace

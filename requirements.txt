@@ -1,11 +1,18 @@
-Flask==2.3.2
-Flask-Mail==0.9.1
-Flask-JWT-Extended==4.4.4
-Flask-SQLAlchemy==3.0.3
-Flask-Migrate==4.0.4
-Flasgger==0.9.5
-Celery==5.3.1
-redis==4.6.0
-WeasyPrint==59.3
-pytest==7.4.0
-python-dotenv==1.0.0
+# Framework e extensões
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Flask-JWT-Extended==4.6.0
+Flask-Mail==0.10.0
+Flasgger==0.9.7.1
+
+# Banco de Dados e Tarefas Assíncronas
+psycopg-binary==3.2.9
+SQLAlchemy==2.0.42
+Celery==5.4.0
+redis==5.0.7
+
+# Outras utilidades
+WeasyPrint==62.3
+python-dotenv==1.0.1
+gunicorn==22.0.0  # Adicionado: Servidor WSGI para produção

@@ -1,0 +1,57 @@
+# A seção 'services' é onde definimos todos os nossos containers (a "banda").
+services:
+  # 1. Serviço da API Flask
+  api:
+    # 'build: .' diz ao Docker Compose para construir a imagem a partir do
+    # Dockerfile que está no mesmo diretório (o diretório raiz do projeto).
+    build: .
+    # Mapeia a porta 5000 do container para a porta 5000 da sua máquina.
+    # Assim, você pode acessar a API em http://localhost:5000
+    ports:
+      - "5000:5000"
+    # 'volumes' espelha o código do seu computador para dentro do container.
+    # Quando você salva um arquivo, ele atualiza automaticamente dentro do container.
+    # Essencial para desenvolvimento, para não precisar reconstruir a imagem a cada mudança.
+    volumes:
+      - .:/app
+    # Carrega as variáveis de ambiente a partir de um arquivo .env na raiz do projeto.
+    # Mantém suas senhas e chaves seguras e fora do código.
+    env_file:
+      - .env
+    # 'depends_on' garante que o container do Redis será iniciado ANTES do container da API.
+    depends_on:
+      - redis
+    # Define um nome amigável para o container para fácil identificação.
+    container_name: api_orcamentos_flask
+
+  # 2. Serviço do Redis
+  redis:
+    # Usa a imagem oficial do Redis com a tag 'alpine'.
+    # A versão Alpine é super leve, ideal para desenvolvimento e produção.
+    image: "redis:alpine"
+    # Mapeia a porta 6379 do container para a 6379 da sua máquina.
+    # Útil se você quiser inspecionar o Redis com alguma ferramenta gráfica.
+    ports:
+      - "6379:6379"
+    container_name: redis_broker
+
+  # 3. Serviço do Celery Worker
+  # Este serviço executa as tarefas em segundo plano.
+  worker:
+    # Ele usa a MESMA imagem da nossa API, pois precisa do mesmo código e dependências.
+    build: .
+    # O comando que ele vai rodar sobrescreve o CMD do Dockerfile.
+    # Ele inicia um worker do Celery.
+    # 'app.celery' aponta para a instância do Celery dentro do seu projeto.
+    # '--loglevel=info' mostra os logs do que o worker está fazendo.
+    command: celery -A app.celery worker --loglevel=info
+    # Também precisa das variáveis de ambiente para se conectar ao Redis e ao banco.
+    env_file:
+      - .env
+    # Também espelha o código para que as tarefas sejam atualizadas em tempo real.
+    volumes:
+      - .:/app
+    # O worker precisa que o Redis esteja de pé para se conectar a ele.
+    depends_on:
+      - redis
+    container_name: celery_worker

@@ -4,7 +4,7 @@
 
 ### Descrição
 
-API RESTful desenvolvida em Flask para gerenciamento completo de orçamentos e propostas para freelancers.  
+API RESTful desenvolvida em Flask para gerenciamento completo de orçamentos e propostas para freelancers.
 Permite CRUD de clientes, propostas, geração de PDFs, autenticação JWT, e integração com fila para tarefas assíncronas.
 
 
@@ -93,7 +93,7 @@ Uma **API RESTful** organizada em arquitetura limpa (MVC), que oferece:
     ```bash
     pip install -r requirements.txt
 
-4. Configure variáveis de ambiente no arquivo .env (exemplo abixo):
+4. Configure variáveis de ambiente no arquivo .env (exemplo abaixo):
     ```bash
     FLASK_APP=run.py
     FLASK_ENV=development
@@ -128,4 +128,3 @@ Será gerada automaticamente com Flasgger e estará disponível em breve
 + Faça push para sua branch: git push origin minha-feature
 
 + Abra um Pull Request
-
