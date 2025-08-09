@@ -20,5 +20,6 @@ COPY . .
 # Porta que a aplicação Flask vai usar
 EXPOSE 5000
 
-# Comando para rodar a aplicação (ajuste para seu arquivo principal)
-CMD ["python", "app.py"]
+# Comando para rodar a aplicação em produção com Gunicorn.
+# Ele aponta para a variável 'app' dentro do arquivo 'run.py'.
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "run:app"]
