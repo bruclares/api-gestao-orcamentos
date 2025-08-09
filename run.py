@@ -1,4 +1,3 @@
-# run.py
 from src import create_app
 
 # Cria a instância da aplicação usando a factory
