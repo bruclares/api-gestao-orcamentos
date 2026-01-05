@@ -7,7 +7,7 @@
 
 ## 📋 Sobre o Projeto
 
-API RESTful desenvolvida para resolver a dor de freelancers na gestão de propostas comerciais. O sistema permite o cadastro de clientes, geração de orçamentos em PDF e envio automático por e-mail, utilizando uma arquitetura moderna e assíncrona.
+API REST desenvolvida para resolver a dor de freelancers na gestão de propostas comerciais. O sistema permite o cadastro de clientes, geração de orçamentos em PDF e envio automático por e-mail, utilizando uma arquitetura moderna e assíncrona.
 
 ### 🛠️ Tech Stack
 
